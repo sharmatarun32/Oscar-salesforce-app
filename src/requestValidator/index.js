@@ -2,6 +2,8 @@ const { apiSchema } = require("./validator");
 
 const reqValidate = (req, res, next) => {
   const params = {
+    fromDate: req.query.fromDate,
+    toDate: req.query.toDate,
     page: req.query.page,
     limit: req.query.limit,
   };

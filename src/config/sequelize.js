@@ -8,12 +8,12 @@ const postgresSequelize = new Sequelize(
   {
     host: process.env.POSTGRES_HOST,
     dialect: "postgres",
-    dialectOptions: process.env.POSTGRES_SSL === "true" ? {
+    dialectOptions:{
       ssl: {
         require: true,
         rejectUnauthorized: false,
       },
-    } : {},
+    } ,
     logging: false,
   }
 );
@@ -25,11 +25,12 @@ const mssqlSequelize = new Sequelize(
   {
     host: process.env.MSSQL_HOST,
     dialect: "mssql",
-    port: 9000,
     dialectOptions: {
       options: {
         encrypt: false,
         trustServerCertificate: true,
+        port: 9000,
+
       },
     },
     logging: false,

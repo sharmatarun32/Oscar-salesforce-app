@@ -1,5 +1,9 @@
 const { postgresSequelize, mssqlSequelize } = require("../config/sequelize");
 const Sequelize = require("sequelize");
+const MssqlOrder = require("../models/MssqlOrder");
+const MssqlInvoice = require("../models/MssqlInvoice");
+const PostgresOrder = require("../models/PostgresOrder");
+const PostgresInvoice = require("../models/PostgresInvoice");
 const MssqlJobCost = require("../models/MssqlJobCost");
 const PostgresJobCost = require("../models/PostgresJobCost");
 const TableLock = require("../models/TableLock");
