@@ -5,12 +5,23 @@ const { Op } = require("sequelize");
 const {
   processInvoice,
   processJobHistory,
+  processJobCost,
   processUpdateInvoice,
   processUpdateJobHistory,
-  processJobCost,
   processUpdateJobCost,
 } = require("../scripts/cronFunctions");
 const { getPageAndLimit } = require("../scripts/helper");
+
+async function runInvoiceData(req, res) {
+  try {
+    await processInvoice();
+    await processUpdateInvoice();
+    return res.status(200).json("completed!");
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json(error);
+  }
+}
 
 async function runJobCostData(req, res) {
   try {
@@ -216,8 +227,8 @@ async function getJobCostData(req, res) {
 module.exports = {
   runInvoiceData,
   runJobHistory,
+  runJobCostData,
   getInvoiceData,
   getJobHistory,
-  runJobCostData,
   getJobCostData,
 };
