@@ -18,6 +18,8 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
+    - name: Fix permissions on node_modules
+    - run: sudo chmod -R u+rwX,g+rwX,o+rwX node_modules || true
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
